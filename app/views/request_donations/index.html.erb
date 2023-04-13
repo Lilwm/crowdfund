@@ -1,0 +1,36 @@
+
+<table class="table table-bordered  table-hover">
+ 
+   <thead class="table-dark">
+    <tr>
+      <th scope="col">Campaign ID</th>
+      <th scope="col">Campaign Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Target amount</th>
+      <th scope="col">Total Raised</th>
+      <th scope="col">Campaign end date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-striped">
+  <% @request_donations.each do |request_donation| %>
+    <tr>
+      <td><%= request_donation.id %></td>
+      <td><%= request_donation.campaign_name %></td>
+      <td><%= request_donation.description %></td>
+      <td><%= request_donation.target_amount %></td>
+      <td><%= request_donation.total_raised %></td>
+      <td><%= request_donation.campaign_enddate %></td>
+      <td>
+         <%= link_to 'Show', request_donation_path(request_donation) %>
+
+          <%= link_to 'Edit', edit_request_donation_path(request_donation) %>
+
+          <%= button_to "Delete", request_donation_path(request_donation, confirm_delete: 'yes'), method: :delete, data: { confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    </tbody>
+      <% end %>
+  </table>
+
+<%= link_to "Request Donations",  new_request_donation_path, class:"btn btn-secondary" %>

@@ -1,0 +1,32 @@
+
+<table class="table table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Campaign_ID</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+<!-- <div id="donations"> -->
+  <tbody>
+  <% @donations.each do |donation| %>
+    <!-- <%= render donation %> -->
+    <tr>
+      <td><%= donation.name %></td>
+      <td><%= donation.amount %></td>
+      <td><%= donation.request_donation_id %></td>
+      <td><%= donation.comment %></td>
+      <td>
+         <%= link_to 'Show', donation_path(donation) %>
+          <%= link_to 'Edit', edit_donation_path(donation) %>
+          <%= link_to 'Delete', donation_path(donation), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+    </tr>
+  </tbody>
+  <% end %>
+<!-- </div> -->
+</table>
+<%= link_to "New donation", new_donation_path, class:"btn btn-secondary" %>

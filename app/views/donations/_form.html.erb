@@ -1,0 +1,42 @@
+<%= form_with(model: donation) do |form| %>
+  <% if donation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(donation.errors.count, "error") %> prohibited this donation from being saved:</h2>
+
+      <ul>
+        <% donation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- #Added this code here -->
+  <div class="field">
+    <%= form.label :Campaign_Name, style: "display: block" %>
+    <%= form.select :request_donation_id,  RequestDonation.all.map { |rd| [rd.campaign_name, rd.id] } %>
+  </div>
+  <br/>
+
+<!-- format the form display -->
+  <div>
+    <%= form.text_field :name, class:"form-control", placeholder:" Your Name" %>
+  </div>
+<br/>
+
+
+  <div>
+    <%= form.number_field :amount, class:"form-control", placeholder:" Amount(Ksh)" %>
+  </div>
+
+<br/>
+  <div>
+    <%= form.text_field :comment, class:"form-control", placeholder:" Comment" %>
+  </div>
+
+<br/>
+
+  <div>
+    <%= form.submit  class:'btn btn-secondary'%>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_with(model: request_donation) do |form| %>
+  <% if request_donation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(request_donation.errors.count, "error") %> prohibited this request_donation from being saved:</h2>
+
+      <ul>
+        <% request_donation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.text_field :campaign_name,  class:"form-control", placeholder:" Campaign name" %>
+  </div>
+
+<br/>
+  <div>
+    <%= form.text_field :description,  class:"form-control", placeholder:" Describe your campaign" %>
+  </div>
+
+<br/>
+  <div>
+    <%= form.number_field :target_amount,  class:"form-control", placeholder:"Enter Target Amount" %>
+  </div>
+
+<br/>
+  <div>
+    <%= form.label :campaign_enddate, style: "display: block" %>
+    <%= form.date_field :campaign_enddate %>
+  </div>
+
+<br/>
+  <div>
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
+<% end %>
