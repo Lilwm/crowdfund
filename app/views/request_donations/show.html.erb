@@ -1,13 +1,14 @@
-<p style="color: green"><%= notice %></p>
 
 <%= render @request_donation %>
 
 <div>
     <br>
   <%= link_to "Edit ", edit_request_donation_path(@request_donation), class:"btn btn-dark" %> 
-  <%= link_to "Delete", @request_donation, method: :delete, class:"btn btn-danger" %>
-  <br>
-  <%= link_to "Back to projects", request_donations_path %>
+  <%= link_to "Back to projects", request_donations_path, class:"btn btn-secondary" %>
+
+  <br>   <br> <%= button_to "Delete", @request_donation, method: :delete, class:"btn btn-danger" %>
+
+  
 
   
 </div>

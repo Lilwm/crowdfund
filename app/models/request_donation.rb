@@ -1,4 +1,5 @@
 class RequestDonation < ApplicationRecord
+	#set relationship with donations table
 	 has_many :donations
 	 after_initialize :set_default_total_raised, if: :new_record?
 
